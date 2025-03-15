@@ -1,0 +1,41 @@
+<div class="task-list">
+  <h2>Lista de Tareas</h2>
+
+  <!-- Filtros -->
+  <div class="filters">
+    <button (click)="filterType = 'all'" [class.active]="filterType === 'all'">Todas</button>
+    <button (click)="filterType = 'pending'" [class.active]="filterType === 'pending'">Pendientes</button>
+    <button (click)="filterType = 'completed'" [class.active]="filterType === 'completed'">Completadas</button>
+  </div>
+
+  <ul>
+    <li *ngFor="let task of filteredTasks">
+      <!-- Vista normal -->
+      <div class="task-content" *ngIf="editingTask?.id !== task.id">
+        <div class="task-text">
+          <span class="task-title" [class.completed]="task.completed">{{ task.title }}</span>
+          <p class="task-description">{{ task.description }}</p>
+        </div>
+        <div class="task-buttons">
+          <button class="complete-btn" (click)="toggleCompletion(task.id)">
+            {{ task.completed ? 'Desmarcar' : 'Completar' }}
+          </button>
+          <button class="edit-btn" (click)="startEditing(task)">✏️</button>
+          <button class="delete-btn" (click)="deleteTask(task.id)">🗑️</button>
+        </div>
+      </div>
+
+      <!-- Modo Edición -->
+      <div class="edit-mode" *ngIf="editingTask?.id === task.id">
+        <div class="edit-fields">
+          <input [(ngModel)]="editingTask!.title" placeholder="Título" />
+          <textarea [(ngModel)]="editingTask!.description" placeholder="Descripción"></textarea>
+        </div>
+        <div class="edit-buttons">
+          <button class="save-btn" (click)="saveEdit()">💾 Guardar</button>
+          <button class="cancel-btn" (click)="cancelEdit()">❌ Cancelar</button>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

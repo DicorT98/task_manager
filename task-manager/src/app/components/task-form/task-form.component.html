@@ -1,0 +1,9 @@
+<div class="task-form">
+  <h2>Nueva Tarea</h2>
+  <input [(ngModel)]="title" placeholder="Título" />
+  <input [(ngModel)]="description" placeholder="Descripción" />
+  <button (click)="addTask()">Agregar</button>
+
+  <!-- Mensaje de error -->
+  <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+</div>
