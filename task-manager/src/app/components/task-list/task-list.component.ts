@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class TaskListComponent {
   tasks: Task[] = [];
-  filterType: 'all' | 'pending' | 'completed' = 'all'; // Filtro actual
+  filterType: 'all' | 'pending' | 'completed' = 'all';
   editingTask: Task | null = null;
 
   constructor(private taskService: TaskService) {}
