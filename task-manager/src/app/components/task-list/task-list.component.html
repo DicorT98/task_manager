@@ -18,10 +18,10 @@
         </div>
         <div class="task-buttons">
           <button class="complete-btn" (click)="toggleCompletion(task.id)">
-            {{ task.completed ? 'Desmarcar' : 'Completar' }}
+            {{ task.completed ? "Desmarcar" : "Completar" }}
           </button>
-          <button class="edit-btn" (click)="startEditing(task)">✏️</button>
-          <button class="delete-btn" (click)="deleteTask(task.id)">🗑️</button>
+          <button class="edit-btn" (click)="startEditing(task)"><mat-icon>edit</mat-icon></button>
+          <button class="delete-btn" (click)="deleteTask(task.id)"><mat-icon>delete</mat-icon></button>
         </div>
       </div>
 
@@ -32,8 +32,8 @@
           <textarea [(ngModel)]="editingTask!.description" placeholder="Descripción"></textarea>
         </div>
         <div class="edit-buttons">
-          <button class="save-btn" (click)="saveEdit()">💾 Guardar</button>
-          <button class="cancel-btn" (click)="cancelEdit()">❌ Cancelar</button>
+          <button class="save-btn" (click)="saveEdit()">Guardar</button>
+          <button class="cancel-btn" (click)="cancelEdit()">Cancelar</button>
         </div>
       </div>
     </li>
